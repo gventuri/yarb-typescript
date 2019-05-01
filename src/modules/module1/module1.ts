@@ -3,22 +3,22 @@
 
 const API_URL = 'https://api.example.com/path';
 
-const SUCCESS = 'module1/CONTRIBUTORS_FETCH_SUCCESS';
-const FAILURE = 'module1/CONTRIBUTORS_FETCH_FAILURE';
+const FETCH_SUCCESS = 'module1/FETCH_SUCCESS';
+const FETCH_FAILURE = 'module1/FETCH_FAILURE';
 
 // ------------------------------------
 // Action creators
 
 function fetchSuccess(result: object) {
   return {
-    type: SUCCESS,
+    type: FETCH_SUCCESS,
     payload: result
   };
 }
 
 function fetchFailure(error: string) {
   return {
-    type: FAILURE,
+    type: FETCH_FAILURE,
     payload: error
   };
 }
@@ -55,12 +55,12 @@ export default function reducer(state = initialState, action: any) {
   const { type, payload } = action;
 
   switch (type) {
-    case SUCCESS:
+    case FETCH_SUCCESS:
       return {
         ...state,
         result: payload
       };
-    case FAILURE:
+    case FETCH_FAILURE:
       return {
         ...state,
         error: payload
